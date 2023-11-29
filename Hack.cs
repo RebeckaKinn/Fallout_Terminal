@@ -9,6 +9,8 @@ namespace FalloutTerminal
     internal class Hack
     {
         private int _attempts = 4;
+        private int _sideRowPlacement = 10;
+        private int _likeness;
         public List<HackSigns> SideNumbers { get; set; }
         public List<HackChar> HackCharacters { get; set; }
         HackAnswer hackAnswer = new HackAnswer();
@@ -42,7 +44,7 @@ namespace FalloutTerminal
             text.Print("Attempts Remaining:  " + PrintAttempts() + "\n");
 
             Generate(text);
-            GenerateSideTries(text);
+            GenerateSideTries(text, input);
             Check(text, input);
         }
 
@@ -59,9 +61,10 @@ namespace FalloutTerminal
         public void Check(OutputConsole text, InputConsole input)
         {
             input.Read();
-            string guess = input.Answer().ToString().ToLower();
+            string guess = input.Answer().ToLower();
+            _likeness = CheckAnswer(guess);
 
-           if (CheckAnswer(guess) == 4)
+           if (_likeness == 4)
             {
                 //dummy
                 Console.Clear();
@@ -71,7 +74,6 @@ namespace FalloutTerminal
             else
             {
                 WrongGuess();
-
                 Enitiate(text, input);
             }
         }
@@ -106,9 +108,41 @@ namespace FalloutTerminal
 
         }
 
-        public void GenerateSideTries(OutputConsole text)
+        public void GenerateSideTries(OutputConsole text, InputConsole input)
         {
+            switch (_attempts)
+            {
+                case 4:
+                    {
+                        break;
+                    }
+                case 3:
+                    {
+                        int col = 43;
 
+                        text.Print($">{input.Answer().ToUpper()}", col, _sideRowPlacement);
+                        text.Print(">Entry denied.", col, _sideRowPlacement + 1);
+                        text.Print($">Likeness={_likeness}", col, _sideRowPlacement + 2);
+                        break;
+                    }
+                case 2:
+                    {
+                        break;
+                    }
+                case 1:
+                    {
+                        break;
+                    }
+                case 0:
+                    {
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+    
         }
     }
 }
