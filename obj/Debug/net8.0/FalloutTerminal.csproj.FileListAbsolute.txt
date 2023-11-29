@@ -1,0 +1,14 @@
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\bin\Debug\net8.0\FalloutTerminal.exe
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\bin\Debug\net8.0\FalloutTerminal.deps.json
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\bin\Debug\net8.0\FalloutTerminal.runtimeconfig.json
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\bin\Debug\net8.0\FalloutTerminal.dll
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\bin\Debug\net8.0\FalloutTerminal.pdb
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.AssemblyInfoInputs.cache
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.AssemblyInfo.cs
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.csproj.CoreCompileInputs.cache
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.dll
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\refint\FalloutTerminal.dll
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.pdb
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\FalloutTerminal.genruntimeconfig.cache
+C:\Users\becka\OneDrive\Dokumenter\GET\Get_It\FalloutTerminal\obj\Debug\net8.0\ref\FalloutTerminal.dll
