@@ -9,17 +9,17 @@ namespace FalloutTerminal
     internal class Hack
     {
         private int _attempts = 4;
-        private int _sideRowPlacement = 19;
         private int _likeness;
         public List<HackSigns> SideNumbers { get; set; }
         public List<HackChar> HackCharacters { get; set; }
         HackAnswer hackAnswer = new HackAnswer();
-        SavedAttempts saved = new SavedAttempts();
+        public List<SavedAttempts> saved {  get; set; }
 
         public Hack()
         {
             SideNumbers = new List<HackSigns>();
             HackCharacters = new List<HackChar>();
+            saved = new List<SavedAttempts>();
             CreateNumberList(32);
         }
 
@@ -65,8 +65,10 @@ namespace FalloutTerminal
             input.Read();
             string guess = input.Answer().ToLower();
             _likeness = CheckAnswer(guess);
-            saved.likeness.Add(_likeness);
-            saved.words.Add(input.Answer().ToUpper());
+
+            saved.Add(new SavedAttempts(input.Answer().ToUpper(), _likeness));
+            //saved.likeness.Add(_likeness);
+            //saved.words.Add(input.Answer().ToUpper());
 
            if (_likeness == 4)
             {
@@ -114,38 +116,34 @@ namespace FalloutTerminal
 
         public void GenerateSideTries(OutputConsole text, InputConsole input)
         {
-            
-            switch (_attempts)
+            int _sideRowPlacement = 21;
+            int col = 43;
+            //need a backwards loop
+            if (_attempts < 4)
             {
-                case 4:
-                    {
-                        break;
-                    }
-                case 3:
-                    {
-                        int col = 43;
+                foreach(var answers in saved)
+                {
+                    text.Print($">Likeness={answers.Likeness}", col, _sideRowPlacement);
+                    _sideRowPlacement--;
+                    text.Print(">Entry denied.", col, _sideRowPlacement);
+                    _sideRowPlacement--;
+                    text.Print($">{answers.Word}", col, _sideRowPlacement);
+                    _sideRowPlacement--;
 
-                        text.Print($">{input.Answer().ToUpper()}", col, _sideRowPlacement);
-                        text.Print(">Entry denied.", col, _sideRowPlacement + 1);
-                        text.Print($">Likeness={_likeness}", col, _sideRowPlacement + 2);
-                        break;
-                    }
-                case 2:
-                    {
-                        break;
-                    }
-                case 1:
-                    {
-                        break;
-                    }
-                case 0:
-                    {
-                        break;
-                    }
-                default:
-                    {
-                        break;
-                    }
+                    //text.Print($">{answers.Word}", col, _sideRowPlacement);
+                    //_sideRowPlacement++;
+                    //text.Print(">Entry denied.", col, _sideRowPlacement);
+                    //_sideRowPlacement++;
+                    //text.Print($">Likeness={answers.Likeness}", col, _sideRowPlacement);
+                    //_sideRowPlacement++;
+                }
+
+                if(_attempts == 0)
+                {
+                    text.Print(">You are locked out...", col, _sideRowPlacement);
+                    _sideRowPlacement--;
+                    text.Print(">Too many failed attempts.", col, _sideRowPlacement);
+                }
             }
     
         }

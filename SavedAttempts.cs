@@ -8,13 +8,13 @@ namespace FalloutTerminal
 {
     public class SavedAttempts
     {
-        public List<string> words;
-        public List<int> likeness;
+        public string Word;
+        public int Likeness;
 
-        public SavedAttempts()
+        public SavedAttempts(string word, int likeness)
         {
-            words = new List<string>();
-            likeness = new List<int>();
+            Word = word;
+            Likeness = likeness;
         }
     }
 }
