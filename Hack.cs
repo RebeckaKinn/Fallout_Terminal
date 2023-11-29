@@ -9,11 +9,13 @@ namespace FalloutTerminal
     internal class Hack
     {
         private int _attempts = 4;
-        private int _sideRowPlacement = 10;
+        private int _sideRowPlacement = 19;
         private int _likeness;
         public List<HackSigns> SideNumbers { get; set; }
         public List<HackChar> HackCharacters { get; set; }
         HackAnswer hackAnswer = new HackAnswer();
+        SavedAttempts saved = new SavedAttempts();
+
         public Hack()
         {
             SideNumbers = new List<HackSigns>();
@@ -63,6 +65,8 @@ namespace FalloutTerminal
             input.Read();
             string guess = input.Answer().ToLower();
             _likeness = CheckAnswer(guess);
+            saved.likeness.Add(_likeness);
+            saved.words.Add(input.Answer().ToUpper());
 
            if (_likeness == 4)
             {
@@ -110,6 +114,7 @@ namespace FalloutTerminal
 
         public void GenerateSideTries(OutputConsole text, InputConsole input)
         {
+            
             switch (_attempts)
             {
                 case 4:
