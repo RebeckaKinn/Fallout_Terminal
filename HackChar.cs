@@ -22,9 +22,6 @@ namespace FalloutTerminal
                 "BOLD", "HUSH", "TANK", "PEAK", "MUTE", "SOLO", "HINT", "JAZZ", "FIRM", "VIBE",
                 "GIFT", "HALL", "MARS", "CANE", "KICK", "ROSE", "COOL", "JAWS", "FAME", "EYES"
             };
-       //HackAnswer hackAnswer = new HackAnswer();//flytta
-        //putte lagring av ordene i en annen klasse
-        //List<string> wordList {get; set;} //flytta
 
         public HackChar(int length, HackAnswer hackAnswer)
         {

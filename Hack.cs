@@ -42,7 +42,8 @@ namespace FalloutTerminal
             text.Print("Attempts Remaining:  " + PrintAttempts() + "\n");
 
             Generate(text);
-            Check(input);
+            GenerateSideTries(text);
+            Check(text, input);
         }
 
         public string PrintAttempts()
@@ -55,19 +56,23 @@ namespace FalloutTerminal
             return rectangle;
         }
 
-        public void Check(InputConsole input)
+        public void Check(OutputConsole text, InputConsole input)
         {
             input.Read();
             string guess = input.Answer().ToString().ToLower();
 
            if (CheckAnswer(guess) == 4)
             {
-                //if right
+                //dummy
+                Console.Clear();
+                text.Print("Nice! You hacked it!");
+                input.Read();
             }
             else
             {
                 WrongGuess();
 
+                Enitiate(text, input);
             }
         }
         public int CheckAnswer(string guess)
@@ -98,6 +103,11 @@ namespace FalloutTerminal
                     text.Print(HackCharacters[i].Show(), 10, rowNumber + i);
                 }
             }
+
+        }
+
+        public void GenerateSideTries(OutputConsole text)
+        {
 
         }
     }
