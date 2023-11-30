@@ -123,6 +123,7 @@ namespace FalloutTerminal
             int timesPrinted = 0;
             //SHOWS THE ANSWER FOR DEBUGGING PURPOSES
             Console.WriteLine(hackAnswer.Answer());
+            //
 
             if (_attempts < 4)
             {

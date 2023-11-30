@@ -40,19 +40,20 @@ namespace FalloutTerminal
 
         public int CheckAnswer(string guessWord)
         {
-            //works, but right answer gives return 8.. 
             int correctHits = 0;
             char lastGuess = '_';
             if (_answer == guessWord) correctHits = 4;
-
-            for (int i = 0; i < _answer.Length; i++)
+            else
             {
-                for (int l = 0; l < guessWord.Length; l++)
+                for (int i = 0; i < _answer.Length; i++)
                 {
-                    if (_answer[i] == guessWord[l] && lastGuess != _answer[i])
+                    for (int l = 0; l < guessWord.Length; l++)
                     {
-                        lastGuess = guessWord[l];
-                        correctHits++;
+                        if (_answer[i] == guessWord[l] && lastGuess != _answer[i])
+                        {
+                            lastGuess = guessWord[l];
+                            correctHits++;
+                        }
                     }
                 }
             }
