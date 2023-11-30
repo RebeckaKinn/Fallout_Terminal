@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,6 +9,10 @@ namespace FalloutTerminal
 {
     internal class Hack
     {
+        private int _colInput = 43;
+        private int _rowInput = 21;
+
+        public bool HackEnitiated { get; set; }
         private int _attempts = 4;
         private int _likeness;
         public List<HackSigns> SideNumbers { get; set; }
@@ -17,6 +22,7 @@ namespace FalloutTerminal
 
         public Hack()
         {
+            HackEnitiated = true;
             SideNumbers = new List<HackSigns>();
             HackCharacters = new List<HackChar>();
             saved = new List<SavedAttempts>();
@@ -47,7 +53,9 @@ namespace FalloutTerminal
 
             Generate(text);
             GenerateSideTries(text, input);
-            Check(text, input);
+            if (HackEnitiated) Check(text, input);
+            else EndHack(input);
+
         }
 
         public string PrintAttempts()
@@ -62,20 +70,18 @@ namespace FalloutTerminal
 
         public void Check(OutputConsole text, InputConsole input)
         {
-            input.Read();
+            input.Read(_colInput, _rowInput);
             string guess = input.Answer().ToLower();
             _likeness = CheckAnswer(guess);
 
             saved.Add(new SavedAttempts(input.Answer().ToUpper(), _likeness));
-            //saved.likeness.Add(_likeness);
-            //saved.words.Add(input.Answer().ToUpper());
 
            if (_likeness == 4)
             {
                 //dummy
                 Console.Clear();
                 text.Print("Nice! You hacked it!");
-                input.Read();
+                input.Click(_colInput, _rowInput);
             }
             else
             {
@@ -89,7 +95,7 @@ namespace FalloutTerminal
         }
 
         private void WrongGuess()
-        {
+        {  
             _attempts--;
         }
 
@@ -116,36 +122,35 @@ namespace FalloutTerminal
 
         public void GenerateSideTries(OutputConsole text, InputConsole input)
         {
-            int _sideRowPlacement = 21;
+            int _sideRowPlacement = _rowInput - 1;
             int col = 43;
             //need a backwards loop
             if (_attempts < 4)
             {
-                foreach(var answers in saved)
+                for(int i = saved.Count-1; i >= 0; i--)
                 {
-                    text.Print($">Likeness={answers.Likeness}", col, _sideRowPlacement);
+                    text.Print($">Likeness={Convert.ToInt32(saved[i].Likeness)}", col, _sideRowPlacement);
                     _sideRowPlacement--;
                     text.Print(">Entry denied.", col, _sideRowPlacement);
                     _sideRowPlacement--;
-                    text.Print($">{answers.Word}", col, _sideRowPlacement);
+                    text.Print($">{saved[i].Word}", col, _sideRowPlacement);
                     _sideRowPlacement--;
-
-                    //text.Print($">{answers.Word}", col, _sideRowPlacement);
-                    //_sideRowPlacement++;
-                    //text.Print(">Entry denied.", col, _sideRowPlacement);
-                    //_sideRowPlacement++;
-                    //text.Print($">Likeness={answers.Likeness}", col, _sideRowPlacement);
-                    //_sideRowPlacement++;
-                }
-
                 if(_attempts == 0)
                 {
                     text.Print(">You are locked out...", col, _sideRowPlacement);
                     _sideRowPlacement--;
                     text.Print(">Too many failed attempts.", col, _sideRowPlacement);
+                    HackEnitiated = false;
                 }
-            }
-    
+                }
+
+            } 
+        }
+
+        public void EndHack(InputConsole input)
+        {
+            
+            input.Click(_colInput, _rowInput);
         }
     }
 }
