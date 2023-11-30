@@ -40,6 +40,7 @@ namespace FalloutTerminal
 
         public int CheckAnswer(string guessWord)
         {
+            //works, but right answer gives return 8.. 
             int correctHits = 0;
             char lastGuess = '_';
             if (_answer == guessWord) correctHits = 4;

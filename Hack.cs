@@ -54,7 +54,7 @@ namespace FalloutTerminal
             Generate(text);
             GenerateSideTries(text, input);
             if (HackEnitiated) Check(text, input);
-            else EndHack(input);
+            else input.Click(_colInput, _rowInput);
 
         }
 
@@ -71,14 +71,14 @@ namespace FalloutTerminal
         public void Check(OutputConsole text, InputConsole input)
         {
             input.Read(_colInput, _rowInput);
-            string guess = input.Answer().ToLower();
-            _likeness = CheckAnswer(guess);
+            string guess = input.Answer().ToUpper();
+            _likeness = hackAnswer.CheckAnswer(guess);
 
-            saved.Add(new SavedAttempts(input.Answer().ToUpper(), _likeness));
+            saved.Add(new SavedAttempts(guess, _likeness));
 
            if (_likeness == 4)
             {
-                //dummy
+                //dummy. Need to create an instans of a new class
                 Console.Clear();
                 text.Print("Nice! You hacked it!");
                 input.Click(_colInput, _rowInput);
@@ -88,10 +88,6 @@ namespace FalloutTerminal
                 WrongGuess();
                 Enitiate(text, input);
             }
-        }
-        public int CheckAnswer(string guess)
-        {
-            return hackAnswer.CheckAnswer(guess);
         }
 
         private void WrongGuess()
@@ -117,14 +113,17 @@ namespace FalloutTerminal
                     text.Print(HackCharacters[i].Show(), 10, rowNumber + i);
                 }
             }
-
         }
 
         public void GenerateSideTries(OutputConsole text, InputConsole input)
         {
+            //shows your input to the hack, how many is correct and the endgame. 
             int _sideRowPlacement = _rowInput - 1;
             int col = 43;
             int timesPrinted = 0;
+            //SHOWS THE ANSWER FOR DEBUGGING PURPOSES
+            Console.WriteLine(hackAnswer.Answer());
+
             if (_attempts < 4)
             {
                if(saved.Count == 4)
@@ -150,13 +149,7 @@ namespace FalloutTerminal
                         HackEnitiated = false;
                     }
                 }
-
             } 
-        }
-
-        public void EndHack(InputConsole input)
-        { 
-            input.Click(_colInput, _rowInput);
         }
     }
 }
