@@ -124,9 +124,13 @@ namespace FalloutTerminal
         {
             int _sideRowPlacement = _rowInput - 1;
             int col = 43;
-            //need a backwards loop
+            int timesPrinted = 0;
             if (_attempts < 4)
             {
+               if(saved.Count == 4)
+               {
+                  _sideRowPlacement = _rowInput - 3;
+               }
                 for(int i = saved.Count-1; i >= 0; i--)
                 {
                     text.Print($">Likeness={Convert.ToInt32(saved[i].Likeness)}", col, _sideRowPlacement);
@@ -135,21 +139,23 @@ namespace FalloutTerminal
                     _sideRowPlacement--;
                     text.Print($">{saved[i].Word}", col, _sideRowPlacement);
                     _sideRowPlacement--;
-                if(_attempts == 0)
-                {
-                    text.Print(">You are locked out...", col, _sideRowPlacement);
-                    _sideRowPlacement--;
-                    text.Print(">Too many failed attempts.", col, _sideRowPlacement);
-                    HackEnitiated = false;
-                }
+                    timesPrinted++;
+
+                    if(_attempts == 0 && timesPrinted == 4)
+                    {
+                        _sideRowPlacement = _rowInput - 1;
+                        text.Print(">You are locked out...", col, _sideRowPlacement);
+                        _sideRowPlacement--;
+                        text.Print(">Too many failed attempts.", col, _sideRowPlacement);
+                        HackEnitiated = false;
+                    }
                 }
 
             } 
         }
 
         public void EndHack(InputConsole input)
-        {
-            
+        { 
             input.Click(_colInput, _rowInput);
         }
     }
