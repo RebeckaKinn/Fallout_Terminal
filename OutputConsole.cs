@@ -50,5 +50,16 @@ namespace FalloutTerminal
             Column(5);
             Console.WriteLine(">[" + text + "]");
         }
+        public void PrintEnhancedOption(string text)
+        {
+            Column(5);
+            Console.WriteLine("[ > " + text + "]");
+        }
+
+        //public void PrintInputSigns(int col, int row)
+        //{
+        //    Column(col, row);
+        //    Console.WriteLine(">");
+        //}
     }
 }

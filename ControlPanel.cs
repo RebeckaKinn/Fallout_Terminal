@@ -12,7 +12,7 @@ namespace FalloutTerminal
         private int _width { get; set; }
         private int _height { get; set; }
 
-        public ControlPanel(int width = 70, int height = 25)
+        public ControlPanel(int width = 70, int height = 23)
         {
             _width = width;
             _height = height;

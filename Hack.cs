@@ -46,9 +46,9 @@ namespace FalloutTerminal
         {
             Console.Clear();
             var screen = new Screen();
-
+            //hackAnswer.Andwer()added for debugging in text.Print
             screen.TopLevelStatements(text);
-            text.Print("Password Required");
+            text.Print("Password Required" + hackAnswer.Answer());
             text.Print("Attempts Remaining:  " + PrintAttempts() + "\n");
 
             Generate(text);
@@ -78,10 +78,9 @@ namespace FalloutTerminal
 
            if (_likeness == 4)
             {
-                //dummy. Need to create an instans of a new class
                 Console.Clear();
-                text.Print("Nice! You hacked it!");
-                input.Click(_colInput, _rowInput);
+                var secretPage = new SecretPage();
+                secretPage.StartPage(text, input);
             }
             else
             {
@@ -121,9 +120,6 @@ namespace FalloutTerminal
             int _sideRowPlacement = _rowInput - 1;
             int col = 43;
             int timesPrinted = 0;
-            //SHOWS THE ANSWER FOR DEBUGGING PURPOSES
-            Console.WriteLine(hackAnswer.Answer());
-            //
 
             if (_attempts < 4)
             {

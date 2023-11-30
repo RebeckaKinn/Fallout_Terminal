@@ -6,5 +6,5 @@ RunProgram();
 void RunProgram()
 {
     controlPanel.Start();
-    screen.Start(input, controlPanel);
+    screen.Start(input, controlPanel, screen);
 }

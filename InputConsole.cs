@@ -10,7 +10,8 @@ namespace FalloutTerminal
     {
         private string? _input { get; set; }
 
-        public void Placement(int col = 3, int row = 23)
+
+        public void Placement(int col = 3, int row = 21)
         {
             Console.SetCursorPosition(col, row);
         }
@@ -27,6 +28,11 @@ namespace FalloutTerminal
             Placement(col, row);
             _input = Console.ReadLine();
             if (isNull()) Read();
+        }
+        public void Click()
+        {
+            Placement();
+            Console.ReadKey();
         }
         public void Click(int col, int row)
         {
