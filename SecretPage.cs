@@ -14,6 +14,7 @@ namespace FalloutTerminal
 
 		public void StartPage(OutputConsole text, InputConsole input)
 		{
+            Console.Clear();
             screen.TopLevelStatements(text);
             screen.TurretControlTopLevelStatements(text);
 
@@ -38,7 +39,7 @@ namespace FalloutTerminal
                     }
                 case "turret control":
                     {
-
+                        TurretControl(input, text);
                         break;
                     }
                 case "death log":
@@ -48,11 +49,18 @@ namespace FalloutTerminal
                     }
                 default:
                     {
-                        StartPage(text, input); 
+                        StartPage(input, text); 
                         break;
                     }
             }
             //create deathlog, turret, control and switch. 
+        }
+
+        public void TurretControl(OutputConsole text, InputConsole input)
+        {
+            Console.Clear();
+            screen.TopLevelStatements(text);
+            screen.TurretControlTopLevelStatements(text);
         }
 
 		
