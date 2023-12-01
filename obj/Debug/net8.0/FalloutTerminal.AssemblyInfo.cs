@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FalloutTerminal")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b6859e48c090c5becb295ad3d00551eab17d60cc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8233561bebad46b2c72d11a9b34b0bf066617f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("FalloutTerminal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FalloutTerminal")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

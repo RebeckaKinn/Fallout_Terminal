@@ -22,16 +22,17 @@ namespace FalloutTerminal
         }
         public void HandleOptions(OutputConsole text, InputConsole input, Screen screen)
         {
+            var controlPanel = new ControlPanel();
             switch (input.Answer())
             {
                 case "overseer log":
                     {
-                        OverseerLog(text, input, screen)
+                        OverseerLog(text, input, screen, controlPanel);
                         break;
                     }
                 case "back":
                     {
-                        screen.Start(text, input, screen);
+                        screen.Start(input, controlPanel, screen);
                         break;
                     }
                 default:
@@ -42,14 +43,20 @@ namespace FalloutTerminal
             }
         }
 
-        public void OverseerLog(OutputConsole text, InputConsole input, Screen screen)
+        public void OverseerLog(OutputConsole text, InputConsole input, Screen screen, ControlPanel controlPanel)
         {
             Console.Clear();
             screen.TopLevelStatements(text);
             screen.OverseerTopLevelStatements(text);
+            text.Print("The commonwealth is starting to bloom, I can feel it!");
+            text.Print("The people in the Vault is getting lost-tempered, I must");
+            text.Print("open the vault... but I am afraid...");
+            text.Print("\n");
+            text.PrintOption("back");
 
-            //in the meantime
-            input.Click();
+            input.Read();
+            if (input.Answer() == "back") StartPage(text, input, screen);
+            else OverseerLog(text, input, screen, controlPanel);
         }
 	}
 }

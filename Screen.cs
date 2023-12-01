@@ -30,7 +30,6 @@ namespace FalloutTerminal
                     overseer.StartPage(text, input, screen);
                     break;
 
-
                 default:
                     Start(input, controlPanel, screen);
                     break;

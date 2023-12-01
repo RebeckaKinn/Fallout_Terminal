@@ -10,10 +10,7 @@ namespace FalloutTerminal
     internal class SecretPage
 	{
         Screen screen = new Screen();
-        public SecretPage()
-		{
-
-		}
+        ControlPanel controlPanel = new ControlPanel();
 
 		public void StartPage(OutputConsole text, InputConsole input)
 		{
@@ -22,7 +19,40 @@ namespace FalloutTerminal
 
             text.PrintEnhancedOption("Switch Control");
             text.PrintEnhancedOption("Turret Control");
+            text.PrintOption("Death Log");
+            text.Print("\n");
+            text.PrintOption("Back");
             input.Read();
+
+            switch (input.Answer())
+            {
+                case "back":
+                    {
+                        screen.Start(input, controlPanel, screen);
+                        break;
+                    }
+                case "switch control":
+                    {
+                        
+                        break;
+                    }
+                case "turret control":
+                    {
+
+                        break;
+                    }
+                case "death log":
+                    {
+
+                        break;
+                    }
+                default:
+                    {
+                        StartPage(text, input); 
+                        break;
+                    }
+            }
+            //create deathlog, turret, control and switch. 
         }
 
 		
