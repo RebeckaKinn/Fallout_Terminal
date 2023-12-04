@@ -39,7 +39,7 @@ namespace FalloutTerminal
                     }
                 case "turret control":
                     {
-                        TurretControl(input, text);
+                        TurretControl(text, input);
                         break;
                     }
                 case "death log":
@@ -49,7 +49,7 @@ namespace FalloutTerminal
                     }
                 default:
                     {
-                        StartPage(input, text); 
+                        StartPage(text, input); 
                         break;
                     }
             }
