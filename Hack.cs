@@ -46,9 +46,9 @@ namespace FalloutTerminal
         {
             Console.Clear();
             var screen = new Screen();
-            //hackAnswer.Andwer()added for debugging in text.Print
+
             screen.TopLevelStatements(text);
-            text.Print("Password Required" + hackAnswer.Answer());
+            text.Print("Password Required");
             text.Print("Attempts Remaining:  " + PrintAttempts() + "\n");
 
             Generate(text);
