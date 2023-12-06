@@ -11,14 +11,14 @@ namespace FalloutTerminal
 	{
         Screen screen = new Screen();
         ControlPanel controlPanel = new ControlPanel();
+        private string _turretCommand = "Activate";
+        private bool _activated = false;
 
-		public void StartPage(OutputConsole text, InputConsole input)
+        public void StartPage(OutputConsole text, InputConsole input)
 		{
             Console.Clear();
             screen.TopLevelStatements(text);
-            screen.TurretControlTopLevelStatements(text);
 
-            text.PrintEnhancedOption("Switch Control");
             text.PrintEnhancedOption("Turret Control");
             text.PrintOption("Death Log");
             text.Print("\n");
@@ -32,11 +32,6 @@ namespace FalloutTerminal
                         screen.Start(input, controlPanel, screen);
                         break;
                     }
-                case "switch control":
-                    {
-                        
-                        break;
-                    }
                 case "turret control":
                     {
                         TurretControl(text, input);
@@ -44,7 +39,7 @@ namespace FalloutTerminal
                     }
                 case "death log":
                     {
-
+                        DeathLog(text, input);
                         break;
                     }
                 default:
@@ -52,17 +47,35 @@ namespace FalloutTerminal
                         StartPage(text, input); 
                         break;
                     }
-            }
-            //create deathlog, turret, control and switch. 
+            } 
         }
 
-        public void TurretControl(OutputConsole text, InputConsole input)
+        private void DeathLog(OutputConsole text, InputConsole input)
         {
             Console.Clear();
             screen.TopLevelStatements(text);
-            screen.TurretControlTopLevelStatements(text);
+
+            input.Read();
         }
 
+        private void TurretControl(OutputConsole text, InputConsole input)
+        {
+            _turretCommand = _activated == true ? "Deactivate" : "Activate";
+            Console.Clear();
+            screen.TopLevelStatements(text);
+            screen.TurretControlTopLevelStatements(text);
+            text.Print("\n");
+            text.PrintOption(_turretCommand);
+
+            input.Read();
+            if (input.Answer() == "back") StartPage(text, input);
+            else if (input.Answer() == _turretCommand.ToLower())
+            {
+                _activated = !_activated;
+                TurretControl(text, input);
+            }
+            else TurretControl(text, input);
+        }
 		
 	}
 }
