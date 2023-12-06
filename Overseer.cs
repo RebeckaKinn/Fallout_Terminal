@@ -48,9 +48,15 @@ namespace FalloutTerminal
             Console.Clear();
             screen.TopLevelStatements(text);
             screen.OverseerTopLevelStatements(text);
-            text.Print("The commonwealth is starting to bloom, I can feel it!");
-            text.Print("The people in the Vault is getting lost-tempered, I must");
-            text.Print("open the vault... but I am afraid...");
+            text.PrintOption("December - 2199");
+            text.Print("My name is Laney Williams, the third Overseer from the Williams ");
+            text.Print("Family. The traider had taken with him some kind of illness, ");
+            text.Print("which has taken us down one by one. We have sendt several out ");
+            text.Print("to find help, but they have not returned. \n");
+            text.PrintOption("July - 2201");
+            text.Print("I send the last one out. I am alone now, waiting for help. ");
+            text.Print("I haven't been outside myself, but as Overseer I have to wait for ");
+            text.Print("them to return. I hope it will be soon...");
             text.Print("\n");
             text.PrintOption("back");
 

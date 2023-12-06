@@ -54,8 +54,23 @@ namespace FalloutTerminal
         {
             Console.Clear();
             screen.TopLevelStatements(text);
+            text.PrintOption("2080 - 2123");
+            text.Print("Martin Ling       --  Overseer");
+            text.Print("Olaf Jhonson      --  Vault Tech Support");
+            text.Print("Loreene Klempton  --  Medical Supervisor");
+            text.Print("Nora Johnson      --  Vault Tech Support");
+            text.Print("John Williams     --  Overseer");
+            text.PrintOption("2124 - 2183");
+            text.Print("Claus West        --  Medical Supervisor");
+            text.Print("Maria Williams    --  Overseer");
+            text.PrintOption("2184 -");
+            text.Print("The rest of us...");
+            text.Print("\n");
+            text.PrintOption("back");
 
             input.Read();
+            if (input.Answer().ToLower() == "back") StartPage(text, input);
+            else DeathLog(text, input);
         }
 
         private void TurretControl(OutputConsole text, InputConsole input)
@@ -68,7 +83,7 @@ namespace FalloutTerminal
             text.PrintOption(_turretCommand);
 
             input.Read();
-            if (input.Answer() == "back") StartPage(text, input);
+            if (input.Answer().ToLower() == "back") StartPage(text, input);
             else if (input.Answer() == _turretCommand.ToLower())
             {
                 _activated = !_activated;
