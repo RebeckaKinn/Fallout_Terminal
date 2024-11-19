@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\FalloutTerminal\\FalloutTerminal.csproj": {}
+    "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\Fallout_Terminal\\FalloutTerminal.csproj": {}
   },
   "projects": {
-    "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\FalloutTerminal\\FalloutTerminal.csproj": {
+    "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\Fallout_Terminal\\FalloutTerminal.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\FalloutTerminal\\FalloutTerminal.csproj",
+        "projectUniqueName": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\Fallout_Terminal\\FalloutTerminal.csproj",
         "projectName": "FalloutTerminal",
-        "projectPath": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\FalloutTerminal\\FalloutTerminal.csproj",
+        "projectPath": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\Fallout_Terminal\\FalloutTerminal.csproj",
         "packagesPath": "C:\\Users\\becka\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\FalloutTerminal\\obj\\",
+        "outputPath": "C:\\Users\\becka\\OneDrive\\Dokumenter\\GET\\Get_It\\Fallout_Terminal\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\becka\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -34,6 +35,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -55,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
